@@ -3,28 +3,23 @@ import truncateEthAddress from 'truncate-eth-address'
 import { useAppContext } from '../context/context'
 
 const LotteryCard = () => {
-  const { enterLottery } = useAppContext()
+  const { enterLottery, lotteryPot, lotteryId, pickWinner, lastWiner } = useAppContext()
 
   return (
     <div className={style.wrapper}>
       <div className={style.title}>
-        {/* TODO: Dynamically render the lotteryID */}
-        Lottery <span className={style.textAccent}>#1</span>
+        Lottery <span className={style.textAccent}>#{lotteryId}</span>
       </div>
       <div className={style.pot}>
-        {/* TODO: Dynamically render the lottery pot */}
-        Pot 🍯: <span className={style.goldAccent}>10 ETH</span>
+        Pot 🍯: <span className={style.goldAccent}>{lotteryPot} ETH</span>
       </div>
 
       <div className={style.recentWinnerTitle}>🏆Last Winners🏆</div>
-      <div className={style.winner}>
-        {/* TODO: Dynamically render the last winner */}
-        {truncateEthAddress('0x1234567890123456789012345678901234567890')}
-      </div>
-      {/* TODO: Add onClick functionality to the buttons */}
+      {!!lastWiner ? <div className={style.winner}>{truncateEthAddress(lastWiner)}</div> : <div className={style.winner}>No Winner Yet!</div>}
       <div className={style.btn} onClick={enterLottery}>Enter</div>
-      <div className={style.btn}>Pick Winner!</div>
+      <div className={style.btn} onClick={pickWinner}>Pick Winner!</div>
     </div>
   )
 }
+
 export default LotteryCard
