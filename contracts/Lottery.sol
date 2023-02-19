@@ -13,6 +13,7 @@ contract Lottery {
         lotteryId = 0;
     }
 
+    // Participate in the lottery
     function enter() public payable {
         require(msg.value >= 0.1 ether);
         players.push(payable(msg.sender));
@@ -39,7 +40,7 @@ contract Lottery {
         return uint(keccak256(abi.encodePacked(owner, block.timestamp)));
     }
 
-    //Pick Winner!
+    //Pick Winner
     function pickWinner() public {
         require(msg.sender == owner);
         uint randomIndex = getRandomNumber() % players.length;
