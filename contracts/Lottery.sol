@@ -8,7 +8,7 @@ contract Lottery {
     address[] public winners;
     uint public lotteryId;
 
-    constructor(){
+    constructor() {
         owner = msg.sender;
         lotteryId = 0;
     }
