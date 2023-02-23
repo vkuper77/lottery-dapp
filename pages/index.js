@@ -6,11 +6,8 @@ import Table from '../components/Table'
 export default function Home() {
   return (
     <div className={style.wrapper}>
-      {/* TODO: Header */}
       <Header/>
-      {/* TODO: LotteryCard */}
       <LotteryCard/>
-      {/* TODO: Players Table */}
       <Table/>
     </div>
   )
